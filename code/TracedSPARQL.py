@@ -34,6 +34,11 @@ logger.addHandler(logging.StreamHandler())
 
 
 class Mapping:
+    """
+    This class is used to convert between the internal representations of URIs and variables
+    in DeTrusty and the API used for the constraint validation.
+    """
+
     def __init__(self, tuple_):
         self.bindings = tuple_[0]
         self.sn = tuple_[1]
@@ -50,14 +55,11 @@ class Mapping:
     def __str__(self) -> str:
         return str(self.bindings) + str(self.exp) + str(self.sn)
 
-    '''
-    Utility functions to convert between DeTrusty's representation of URIs and variables and the one of the API.
-    '''
-
     def add_var_prefix(self, var):
         """
-        Converts input into a variable starting with ?.
-        The internal representation of a variable.
+        Converts the input into a variable starting with question mark ('?').
+        For example, the variable 'x' is returned as '?x'.
+        Returns the internal representation of a variable.
         """
         var = str(var)
         if var.startswith('?'):
@@ -67,8 +69,9 @@ class Mapping:
 
     def del_var_prefix(self, var):
         """
-        Converts input into a variable not starting with ?.
-        The external representation of a variable.
+        Converts the input into a variable that does not start with question mark ('?').
+        For example, the variable '?x' is returned as 'x'.
+        Returns the external representation of a variable.
         """
         var = str(var)
         if var.startswith('?'):
@@ -78,8 +81,9 @@ class Mapping:
 
     def decapsulate(self, value):
         """
-        Removes leading and subsequent '<' '>'.
-        The external representation of a URI.
+        Removes leading and trailing brackets ('<' and '>') from the given input.
+        For example, '<https://example.org/vocab#Person>' is returned as 'https://example.org/vocab#Person'.
+        Returns the external representation of a URI.
         """
         if value.startswith('<') and value.endswith('>'):
             return value[1:-1]
@@ -88,8 +92,9 @@ class Mapping:
 
     def encapsulate(self, value):
         """
-        Adds leading and subsequent '<' '>'.
-        The internal representation of a URI.
+        Adds leading and trailing brackets ('<' and '>') to the given input.
+        For example, 'https://example.org/vocab#Person' is returned as '<https://example.org/vocab#Person>'.
+        Returns the internal representation of a URI.
         """
         if value.startswith('http'):
             return '<' + value + '>'
@@ -97,8 +102,9 @@ class Mapping:
             return value
 
     '''
-    The following methods are trying to emulate a dictionary type such that one can use Mapping similar to a dictionary.
-    The goal is to make as few changes as possible to the operators and at the same time manage the reasoning (sn) and the Validation Results (exp) properly.
+    The following methods are emulating a dictionary type such that instances of Mapping
+    can be used similar to dictionaries. The goal is to make as few changes as possible to the
+    operators and at the same time manage the reasoning (sn) and validation results (exp) properly.
     '''
 
     def __getitem__(self, var):
@@ -139,7 +145,6 @@ class Mapping:
                     self.exp.append(r)
         elif isinstance(mapping2, dict):
             self.bindings.update({self.add_var_prefix(key): self.encapsulate(value) for key, value in mapping2.items()})
-            # print('Added binding without explanation : ' + str(mapping2))
         else:
             raise Exception('Unexpected type to update a Mapping Object: ' + str(type(mapping2)))
 
@@ -172,11 +177,27 @@ class Mapping:
 
 
 class TracedSPARQLDecomposer(DeTrustyDecomposer):
+    """
+    An extension of DeTrustyDecomposer that considers the additional configuration for the validation.
+    Since the validation depends on the star-shaped decomposition, decompType is fixed to 'STAR'.
+    """
+
     def __init__(self, query, config, joinstarslocally=True, val_config=None):
+        """
+        Initialize the decomposer.
+
+        :param query: The SPARQL query to be executed
+        :param config: DeTrusty's configuration, i.e., the source descriptions
+        :param joinstarslocally: Indicates whether joins should be performed at the query engine, default: True
+        :param val_config: Settings for the validation of the SHACL constraints
+        """
         super().__init__(query=query, config=config, decompType='STAR', joinstarslocally=joinstarslocally)
         self.val_config = val_config
 
     def decompose(self):
+        """
+        Decomposes the SPARQL query and returns the decomposed SPARQL following DeTrusty's internal structure.
+        """
         if not self.query:
             return None
 
@@ -208,8 +229,6 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
             raise Exception('The following variables have been defined in the GROUP BY clause but not in the body: '
                             + str(set(group_by_vars) - body_vars))
 
-        logger.info('Decomposition obtained:\n' + str(self.query))
-
         self.query.body = self.makePlanQuery(self.query)
 
         return self.query
@@ -226,11 +245,6 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
             return None
 
     def decomposeJoinBlock(self, jb):
-        """
-        tl : triple
-        sl : ???
-        fl : filters, (additionally, BIND, VALUES)
-        """
         tl = []
         sl = []
         fl = []
@@ -549,6 +563,12 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
             return qpl1
 
     def map_star_to_shape(self, tl, stars):
+        """
+        Maps a star-shaped sub-query to its target shape, i.e., SHACL constraints.
+
+        :param tl: Set of triples that need to be mapped to a shape
+        :param stars: The stars occurring in the SPARQL query being decomposed
+        """
         selected_molecules = {}
         var_preds = {}
         star_preds = {}
@@ -629,12 +649,18 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
         return star_shape_map
 
     def get_centers(self, triples):
+        """
+        Gets the variable names that represent the different stars in a set of triples.
+        """
         centers = set()
         for triple in triples:
             centers.add(triple.subject.name)
         return list(centers)
 
     def get_target_shapes(self, centers, star_shape_map):
+        """
+        Gets the list of target shapes for the given list of stars.
+        """
         target_shapes = set()
         for center in centers:
             if center in star_shape_map.keys():
@@ -642,6 +668,9 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
         return list(target_shapes)
 
     def get_var_shape_map(self, centers, star_shape_map):
+        """
+        Creates a dictionary containing the target shape for each variable in the list that represents a star.
+        """
         var_shape_map = {}
         for center in centers:
             if center in star_shape_map.keys():
@@ -650,7 +679,20 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
 
 
 class Service(DeTrustyService):
+    """
+    An extension of the DeTrustyService class in order to propagate the target shape of a sub-query.
+    """
+
     def __init__(self, endpoint, triples, limit=-1, filter_nested=None, target_shape=None):
+        """
+        Initializes the Service instance.
+
+        :param endpoint: The endpoint to contact for the sub-query
+        :param triples: The triples to include in the query sent to the endpoint.
+        :param limit: The maximum number of triples to return per call, default -1 means no limit
+        :param filter_nested: List of nested filters, default None
+        :param target_shape: The target shape to include in the validation, default None
+        """
         super().__init__(endpoint, triples, limit, filter_nested)
         self.target_shape = target_shape
 
@@ -669,7 +711,21 @@ class Service(DeTrustyService):
 
 
 class TracedSPARQLPlanner(DeTrustyPlanner):
+    """
+    An extension of DeTrustyPlanner that considers the validation config.
+    """
+
     def __init__(self, query, wc, contact, endpointType, config, val_config):
+        """
+        Initialized the TracedSPARQLPlanner instance.
+
+        :param query: The decomposed SPARQL query for which to create the query plan
+        :param wc: Indicates whether counts should be kept
+        :param contact: The function to be used in order to contact the endpoints
+        :param endpointType: The types of endpoints to be considered, only SPARQL endpoints are supported
+        :param config: DeTrusty's configuration, i.e., the source descriptions
+        :param val_config: The configuration for the validation
+        """
         super().__init__(query, wc, contact, endpointType, config)
         self.val_config = val_config
 
@@ -731,7 +787,20 @@ class TracedSPARQLPlanner(DeTrustyPlanner):
 
 
 class IndependentOperator(DeTrustyIndependent):
+    """
+    An extension of DeTrustyIndependent that keeps track of the target shape of the sub-query.
+    """
+
     def __init__(self, query, tree, c, config, val_config):
+        """
+        Initializes the IndependentOperator instance.
+
+        :param query: The decomposed SPARQL query
+        :param tree: The sub-tree representing the independent operator, i.e., sub-query
+        :param c: The function to use for contacting the endpoint
+        :param config: The configuration of DeTrusty, i.e., the source descriptions
+        :param val_config: The configuration for the constraint validation
+        """
         super().__init__(query, tree, c, config)
         self.val_config = val_config
 
@@ -744,6 +813,13 @@ class IndependentOperator(DeTrustyIndependent):
         return IndependentOperator(self.query, new_tree, self.contact, self.config, self.val_config)
 
     def execute(self, outputqueue, processqueue=Queue()):
+        """
+        Executes the sub-query, i.e., creates a new process which is using the specified
+        method to contact the endpoint. The results are written to a queue.
+
+        :param outputqueue: The queue to put the query results in
+        :param processqueue: The queue to manage the running processes, defaults to a new queue
+        """
         if self.tree.service.limit == -1:
             self.tree.service.limit = 10000  # TODO: Fixed value, this can be learnt in the future
 
@@ -754,6 +830,19 @@ class IndependentOperator(DeTrustyIndependent):
 
 
 def contact_source(server, query, queue, val_config=None, target_shape=None, config=None, limit=-1):
+    """
+    Determines which function to use for contacting the SPARQL endpoint, i.e., whether to use
+    the original implementation of DeTrusty or the TracedSPARQL implementation which is adding
+    SHACL validation results as a trace to the SPARQL query result.
+
+    :param server: The external SPARQL endpoint
+    :param query: The star-shaped query to be executed
+    :param queue: The queue to put the query results in
+    :param val_config: The configuration for the validation
+    :param target_shape: The name of the shape which is focused by the star-shaped query
+    :param config: DeTrusty's configuration, i.e., source descriptions
+    :param limit: The maximum number of triples to return per call, default -1 means no limit
+    """
     try:
         if val_config is not None:
             contact_val_source(server, query, queue, val_config, target_shape, config=config, limit=limit)
@@ -774,9 +863,13 @@ def contact_val_source(server, query, queue, val_config, target_shape, config=No
     Contacts the validation API which gives the joined validation results by contacting the
     external SPARQL endpoint and asking the given backend for validation results.
 
-    server: the external SPARQL endpoint
-    query: the star-shaped query to be executed
-    target_shape: the name of the shape which is focused by the star-shaped query
+    :param server: The external SPARQL endpoint
+    :param query: The star-shaped query to be executed
+    :param queue: The queue to put the query results in
+    :param val_config: The configuration for the validation
+    :param target_shape: The name of the shape which is focused by the star-shaped query
+    :param config: DeTrusty's configuration, i.e., source descriptions
+    :param limit: The maximum number of triples to return per call, default -1 means no limit
     """
     from shaclapi.api import run_multiprocessing, get_result_queue
     logging.getLogger().setLevel(logging.ERROR)
@@ -805,6 +898,9 @@ def contact_val_source(server, query, queue, val_config, target_shape, config=No
 
 
 def get_options():
+    """
+    Gets the command line arguments.
+    """
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'h:q:c:r:a:s:i:p:')
     except getopt.GetoptError:
@@ -854,6 +950,9 @@ def get_options():
 
 
 def usage():
+    """
+    Prints the usage message for TracedSPARQL.
+    """
     usage_str = 'Usage: {program} -q <query_file> -c <config_file> -o <sparql1.1> -r <print_result> ' \
                 '-a <api_config> -s <schema_path> -i <query_id> -d <decomposition> -p <output_dir>' \
                 '\nwhere \n' \
@@ -868,6 +967,16 @@ def usage():
 
 
 def main(query_file, config_file, print_result, val_config, query_id, output_dir):
+    """
+    Runs a SPARQL query with TracedSPARQL.
+
+    :param query_file: Path to the file containing the SPARQL query to be executed
+    :param config_file: Path to the file containing the source descriptions
+    :param print_result: Indicates whether to print the results of the SPARQL query
+    :param val_config: Path to the configuration file for the constraint validation
+    :param query_id: ID used to identify the query
+    :param output_dir: Output path for the files containing the statistics of running TracedSPARQL
+    """
     try:
         query = open(query_file, 'r', encoding='utf8').read()
         config = ConfigFile(config_file)
@@ -1005,3 +1114,4 @@ if __name__ == '__main__':
         query_id=query_id,
         output_dir=output_dir
     )
+
