@@ -319,8 +319,9 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
                     properties = [p['predicate'] for p in self.config.metadata[m]['predicates']]
                     pinter = set(properties).intersection(preds)
                     if len(pinter) != len(preds):
-                        print('Subquery: ', stars[s], '\nCannot be executed, because it contains properties that '
-                                                      'does not exist in this federations of datasets.')
+                        logger.error('Subquery: ' + str(stars[s]) +
+                                     '\nCannot be executed, because it contains properties that ' +
+                                     'do not exist in this federation.')
                         return []
                 continue
 
@@ -344,7 +345,7 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
             else:
                 splitstars = self.config.find_preds_per_mt(preds)
                 if len(splitstars) == 0:
-                    print('cannot find any matching molecules for:', tl)
+                    logger.error('Cannot find any matching molecules for:', tl)
                     return []
                 else:
                     splitedstars[s] = [stars[s], splitstars, preds]
@@ -589,8 +590,9 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
                     properties = [p['predicate'] for p in self.config.metadata[m]['predicates']]
                     pinter = set(properties).intersection(preds)
                     if len(pinter) != len(preds):
-                        print('Subquery: ', stars[s], '\nCannot be executed, because it contains properties that '
-                                                      'do not exist in this federation.')
+                        logger.error('Subquery: ' + str(stars[s]) +
+                                     '\nCannot be executed, because it contains properties that ' +
+                                     'do not exist in this federation.')
                         return []
                 continue
 
@@ -614,7 +616,7 @@ class TracedSPARQLDecomposer(DeTrustyDecomposer):
             else:
                 split_stars = self.config.find_preds_per_mt(preds)
                 if len(split_stars) == 0:
-                    print('cannot find any matching molecules for:', tl)
+                    logger.error('Cannot find any matching molecules for:', tl)
                     return []
                 else:
                     splitted_stars[s] = [stars[s], split_stars, preds]
@@ -757,8 +759,7 @@ class TracedSPARQLPlanner(DeTrustyPlanner):
                             n = TreePlan(Xfilter(f), n.vars, n)
                     return n
             else:
-                print('tree.service' + str(type(tree.service)) + str(tree.service))
-                print('Error Type not considered')
+                logger.error('Error: Type not considered: tree.service ' + str(type(tree.service)) + str(tree.service))
 
         elif isinstance(tree, Node):
             left_subtree = self.includePhysicalOperators(tree.left)
@@ -850,12 +851,12 @@ def contact_source(server, query, queue, val_config=None, target_shape=None, con
             contact_rdf_source(server, query, queue, config=config, limit=limit)
     except Exception as e:
         queue.put('EOF')
-        print('EXCEPTION in contact source: ', str(e))
+        logger.error('EXCEPTION in contact source: ', str(e))
         import sys
         import traceback
         exc_type, exc_value, exc_traceback = sys.exc_info()
         emsg = repr(traceback.format_exception(exc_type, exc_value, exc_traceback))
-        print(emsg)
+        logger.error(emsg)
 
 
 def contact_val_source(server, query, queue, val_config, target_shape, config=None, limit=-1):
