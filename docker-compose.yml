@@ -1,0 +1,9 @@
+version: '2.3'
+
+services:
+  tracedsparql_engine:
+    build: ./code/
+    image: sdmtib/tracedsparql_engine:experiments
+    container_name: tracedsparql_engine
+    mem_limit: 32g
+
