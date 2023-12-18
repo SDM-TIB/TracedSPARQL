@@ -1102,6 +1102,11 @@ def main(query_file, config_file, print_result, val_config, query_id, output_dir
         }
     except Exception as e:
         logger.error('EXCEPTION: ' + str(e))
+        import sys
+        import traceback
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        emsg = repr(traceback.format_exception(exc_type, exc_value, exc_traceback))
+        logger.error(emsg)
         exit(-1)
 
 
