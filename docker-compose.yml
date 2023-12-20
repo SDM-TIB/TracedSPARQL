@@ -30,6 +30,35 @@ services:
     ports:
       - '15002:8890'
 
+  # WatDiv data sets
+  tracedsparql_watdiv_500k:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_watdiv_500k
+    volumes:
+      - ./datasources/watdiv/500k:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15003:8890'
+  tracedsparql_watdiv_10M:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_watdiv_10M
+    volumes:
+      - ./datasources/watdiv/10M:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15004:8890'
+  tracedsparql_watdiv_100M:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_watdiv_100M
+    volumes:
+      - ./datasources/watdiv/100M:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15005:8890'
+
   # TracedSPARQL engine
   tracedsparql_engine:
     build: ./code/
