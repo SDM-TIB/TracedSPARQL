@@ -1,0 +1,15 @@
+@prefix ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <http://example.org/> .
+
+:Course a sh:NodeShape;
+    sh:targetClass ub:Course ;
+    sh:property [
+        sh:path ub:name ;
+        sh:minCount 1
+    ] ;
+    sh:targetClass ub:Course ;
+    sh:property [
+        sh:path ub:name ;
+        sh:maxCount 1
+    ] .

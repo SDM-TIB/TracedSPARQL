@@ -1,0 +1,29 @@
+@prefix ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <http://example.org/> .
+
+:Publication a sh:NodeShape;
+    sh:targetClass ub:Publication ;
+    sh:property [
+        sh:path ub:name;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:publicationAuthor;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:publicationAuthor;
+        sh:maxCount 7
+    ] ;
+    sh:property [
+        sh:path ub:publicationAuthor;
+        sh:qualifiedValueShape [
+            sh:node :UndergraduateStudent
+        ] ;
+        sh:qualifiedMaxCount 0
+    ] .

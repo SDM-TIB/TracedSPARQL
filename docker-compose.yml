@@ -1,11 +1,45 @@
 version: '2.3'
 
 services:
+  # LUBM data sets
+  tracedsparql_lubm_skg:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_lubm_skg
+    volumes:
+      - ./datasources/lubm/skg:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15000:8890'
+  tracedsparql_lubm_mkg:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_lubm_mkg
+    volumes:
+      - ./datasources/lubm/mkg:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15001:8890'
+  tracedsparql_lubm_lkg:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_lubm_lkg
+    volumes:
+      - ./datasources/lubm/lkg:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15002:8890'
+
+  # TracedSPARQL engine
   tracedsparql_engine:
     build: ./code/
     image: sdmtib/tracedsparql_engine:experiments
     container_name: tracedsparql_engine
     volumes:
       - ./api_configs:/inputs/api_configs
+      - ./shapes:/inputs/shapes
+      - ./results:/results
+      - ./datasources/source-description:/TracedSPARQL/Config
+      - ./queries:/queries
     mem_limit: 32g
 

@@ -1,0 +1,61 @@
+@prefix ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <http://example.org/> .
+
+:FullProfessor a sh:NodeShape;
+    sh:targetClass ub:FullProfessor ;
+    sh:property [
+        sh:path ub:doctoralDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:emailAddress;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:headOf;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMaxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:researchInterest;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:teacherOf;
+        sh:qualifiedValueShape [
+            sh:node :Course
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:teacherOf;
+        sh:qualifiedValueShape [
+            sh:node :GraduateCourse
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:telephone;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:worksFor;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMinCount 1
+    ] .

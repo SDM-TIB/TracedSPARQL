@@ -1,0 +1,1353 @@
+[
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+    "target_shape": "<http://example.org/University>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Publication",
+    "target_shape": "<http://example.org/Publication>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#publicationAuthor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#TeachingAssistant",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Lecturer",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#ResearchAssistant",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateStudent",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#TeachingAssistant",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Lecturer",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#ResearchAssistant",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateStudent",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#publicationAuthor"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#UndergraduateStudent",
+    "target_shape": "<http://example.org/UndergraduateStudent>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#ResearchGroup",
+    "target_shape": "<http://example.org/ResearchGroup>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#subOrganizationOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#subOrganizationOf"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+    "target_shape": "<http://example.org/GraduateCourse>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateStudent",
+    "target_shape": "<http://example.org/GraduateStudent>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teachingAssistantOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teachingAssistantOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+    "target_shape": "<http://example.org/Department>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#subOrganizationOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#subOrganizationOf"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+    "target_shape": "<http://example.org/FullProfessor>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#headOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#headOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#ResearchAssistant",
+    "target_shape": "<http://example.org/ResearchAssistant>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+    "target_shape": "<http://example.org/Course>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+    "target_shape": "<http://example.org/AssistantProfessor>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#TeachingAssistant",
+    "target_shape": "<http://example.org/TeachingAssistant>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teachingAssistantOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssistantProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teachingAssistantOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#advisor",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#memberOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#takesCourse",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#AssociateProfessor",
+    "target_shape": "<http://example.org/AssociateProfessor>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#researchInterest",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  },
+  {
+    "rootType": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Lecturer",
+    "target_shape": "<http://example.org/Lecturer>",
+    "predicates": [
+      {
+        "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+        "range": [],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      },
+      {
+        "predicate": "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor",
+        "range": [
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+        ],
+        "policies": [
+          {
+            "dataset": "http://tracedsparql_lubm_skg:8890/sparql",
+            "operator": "PR"
+          }
+        ]
+      }
+    ],
+    "linkedTo": [
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#GraduateCourse",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#University",
+      "http://swat.cse.lehigh.edu/onto/univ-bench.owl#Department"
+    ],
+    "wrappers": [
+      {
+        "url": "http://tracedsparql_lubm_skg:8890/sparql",
+        "predicates": [
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#doctoralDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#emailAddress",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#mastersDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#name",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#teacherOf",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#telephone",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#undergraduateDegreeFrom",
+          "http://swat.cse.lehigh.edu/onto/univ-bench.owl#worksFor"
+        ],
+        "urlparam": "",
+        "wrapperType": "SPARQLEndpoint"
+      }
+    ]
+  }
+]
