@@ -1,0 +1,10 @@
+{
+    "backend": "s2spy",
+    "start_with_target_shape": true,
+    "replace_target_query": false,
+    "prune_shape_network": false,
+    "output_format": "stats",
+    "join_implementation": "Xgjoin",
+    "reasoning": false,
+    "run_in_serial": true
+}
