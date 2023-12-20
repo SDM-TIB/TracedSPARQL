@@ -1,0 +1,5 @@
+SELECT ?genre WHERE {
+  ?genre <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Genre> .
+  ?genre <http://dbpedia.org/property/instruments> ?instruments .
+  ?genre <http://dbpedia.org/ontology/abstract> ?abstract .
+}

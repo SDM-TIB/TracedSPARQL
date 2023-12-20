@@ -1,0 +1,6 @@
+SELECT ?person ?place ?name ?career WHERE {
+  ?person <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
+  ?person <http://dbpedia.org/property/birthPlace> ?place .
+  ?person <http://dbpedia.org/property/name> ?name .
+  ?person <http://dbpedia.org/ontology/careerStation> ?career .
+}

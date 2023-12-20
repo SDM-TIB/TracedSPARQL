@@ -1,0 +1,4 @@
+SELECT ?drug WHERE {
+  ?drug <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Drug> .
+  ?drug <http://dbpedia.org/property/smiles> ?smiles .
+}

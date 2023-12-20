@@ -1,0 +1,9 @@
+SELECT * WHERE {
+  ?film <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+  ?film <http://dbpedia.org/property/genre> ?genre .
+  ?film <http://dbpedia.org/property/music> ?music .
+  ?genre <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Genre> .
+  ?genre <http://dbpedia.org/property/subgenres> ?subgenre .
+  ?music <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Band> .
+  ?music <http://dbpedia.org/property/awards> ?awards .
+}

@@ -1,0 +1,8 @@
+SELECT * WHERE {
+  ?disease <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Disease> .
+  ?disease <http://dbpedia.org/ontology/icd10> ?icd10 .
+  ?disease <http://dbpedia.org/ontology/meshId> ?meshId .
+  ?disease <http://dbpedia.org/property/speciality> ?speciality .
+  ?speciality <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MedicalSpecialty> .
+  ?speciality <http://dbpedia.org/property/activitySector> ?activity .
+}

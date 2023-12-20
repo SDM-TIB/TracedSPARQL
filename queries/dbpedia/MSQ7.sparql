@@ -1,0 +1,12 @@
+SELECT * WHERE {
+  ?work <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/WrittenWork> .
+  ?work <http://dbpedia.org/property/publisher> ?publisher .
+  ?work <http://dbpedia.org/property/isbn> ?isbn .
+  ?publisher <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Company> .
+  ?publisher <http://dbpedia.org/ontology/foundingYear> ?year.
+  ?publisher <http://dbpedia.org/property/country> ?country .
+  ?country <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Country> .
+  ?country <http://dbpedia.org/ontology/capital> ?city .
+  ?country <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat .
+  ?country <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long .
+}

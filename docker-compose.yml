@@ -59,6 +59,17 @@ services:
     ports:
       - '15005:8890'
 
+  #DBpedia
+  tracedsparql_dbpedia:
+    image: prohde/virtuoso-opensource-7:7.2.11
+    container_name: tracedsparql_dbpedia
+    volumes:
+      - ./datasources/dbpedia:/database
+      - ./datasources/virtuoso.ini:/database/virtuoso.ini
+    mem_limit: 64g
+    ports:
+      - '15006:8890'
+
   # TracedSPARQL engine
   tracedsparql_engine:
     build: ./code/
