@@ -1,0 +1,10 @@
+SELECT * WHERE {
+  ?film <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+  ?film <http://dbpedia.org/property/name> ?name .
+  ?film <http://dbpedia.org/property/country> ?country .
+  ?film <http://dbpedia.org/property/director> ?director .
+  ?film <http://dbpedia.org/property/language> ?language .
+  ?film <http://dbpedia.org/ontology/writer> ?writer .
+  ?film <http://dbpedia.org/ontology/distributor> ?distributor  .
+  ?film <http://dbpedia.org/property/budget> ?budget .
+}

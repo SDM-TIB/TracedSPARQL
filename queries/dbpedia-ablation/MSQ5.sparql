@@ -1,0 +1,9 @@
+SELECT ?drug ?disease WHERE {
+  ?drug <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Drug> .
+  ?drug <http://dbpedia.org/property/smiles> ?smiles .
+  ?drug <http://dbpedia.org/property/casNumber> ?casNumber .
+  ?disease <http://dbpedia.org/property/treatment> ?drug .
+  ?disease <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Disease> .
+  ?disease <http://dbpedia.org/ontology/icd10> ?icd10 .
+  ?disease <http://dbpedia.org/ontology/meshId> ?meshId .
+}

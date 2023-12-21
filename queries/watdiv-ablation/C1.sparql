@@ -1,0 +1,6 @@
+SELECT ?v0 ?v4 WHERE {
+	?v0 <http://schema.org/caption> ?v1 .
+	?v0 <http://schema.org/text> ?v2 .
+	?v0 <http://schema.org/contentRating> ?v3 .
+	?v0 <http://purl.org/stuff/rev#hasReview> ?v4 .
+}
