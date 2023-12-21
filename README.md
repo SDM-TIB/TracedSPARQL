@@ -14,7 +14,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
 - docker-compose - v1.26.0 or newer
 
 ### Bash Commands
-The experiment script use the following bash commands:
+The experiment scripts use the following bash commands:
 
 - basename
 - cd
