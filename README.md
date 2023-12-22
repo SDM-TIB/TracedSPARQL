@@ -52,6 +52,13 @@ This leads to the following engines included in the evaluation:
 - _TracedSPARQL_: The TracedSPARQL approach using Trav-SHACL
 - _TracedSPARQL S2S_: The TracedSPARQL approach using SHACL2SPARQLpy
 
+### How to reproduce?
+In order to facilitate the reproduction of the results, all components are encapsulated in Docker containers and the experiments are controlled via Shell scripts.
+You can run the entire pipeline by executing:
+```bash
+sudo ./00_auto.sh
+```
+
 ## References
 <a name="1">[1]</a> Y. Guo, Z. Pan, J. Heflin. _LUBM: A Benchmark for OWL Knowledge Base Systems_. Journal of Web Semantics 3(2-3), 158-182 (2005). DOI: [10.1016/j.websem.2005.06.005](https://doi.org/10.1016/j.websem.2005.06.005)
 
