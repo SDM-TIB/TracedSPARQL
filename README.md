@@ -52,6 +52,11 @@ This leads to the following engines included in the evaluation:
 - _TracedSPARQL_: The TracedSPARQL approach using Trav-SHACL
 - _TracedSPARQL S2S_: The TracedSPARQL approach using SHACL2SPARQLpy
 
+### Setups
+The combination of a knowledge graph, engine, SHACL shape schema, and SPARQL query is referred to as a testbed; this leads to a total of 1,065 testbeds.
+Each testbed is executed five times.
+Caches are flushed between the execution of two consecutive testbeds.
+
 ### How to reproduce?
 In order to facilitate the reproduction of the results, all components are encapsulated in Docker containers and the experiments are controlled via Shell scripts.
 You can run the entire pipeline by executing:
