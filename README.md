@@ -4,6 +4,18 @@
 
 TracedSPARQL is tracing SHACL validations during SPARQL query processing towards a better understanding of SPARQL query results.
 
+## Table of Contents
+1. [Preparation of the Environment](#preparation-of-the-environment)
+    1. [Machine Requirements](#machine-requirements)
+    1. [Software](#software)
+    1. [Bash Commands](#bash-commands)
+1. [Experiments](#experiments)
+    1. [Data](#data)
+    1. [Engines](#engines)
+    1. [Setups](#setups)
+    1. [How to reproduce?](#how-to-reproduce)
+1. [References](#references)
+
 ## Preparation of the Environment
 ### Machine Requirements
 - OS: Ubuntu 16.04.6 LTS or newer
