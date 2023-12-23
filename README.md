@@ -14,6 +14,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
     1. [Engines](#engines)
     1. [Setups](#setups)
     1. [How to reproduce?](#how-to-reproduce)
+1. [License](#license)    
 1. [References](#references)
 
 ## Preparation of the Environment
@@ -75,6 +76,9 @@ You can run the entire pipeline by executing:
 ```bash
 sudo ./00_auto.sh
 ```
+
+## License
+TracedSPARQL is licensed under GPL-3.0, see the [license](https://github.com/SDM-TIB/TracedSPARQL/blob/master/LICENSE).
 
 ## References
 <a name="1">[1]</a> Y. Guo, Z. Pan, J. Heflin. _LUBM: A Benchmark for OWL Knowledge Base Systems_. Journal of Web Semantics 3(2-3), 158-182 (2005). DOI: [10.1016/j.websem.2005.06.005](https://doi.org/10.1016/j.websem.2005.06.005)
