@@ -4,11 +4,32 @@ import os
 from statistics import mean
 from statistics import stdev as std
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
 from numpy import genfromtxt
 
 base_path = '/results'
 raw_path = os.path.join(base_path, 'raw')
 summarized_path = os.path.join(base_path, 'summarized')
+plot_path = os.path.join(base_path, 'plots_violin')
+
+kgs = {
+    'lubm': ['SKG', 'MKG', 'LKG'],
+    'watdiv': ['500k', '10M', '100M'],
+    'dbpedia': ['DBpedia']
+}
+palette = {
+    'Baseline': '#EDAE49',
+    'Baseline S2S': '#D1495B',
+    'TracedSPARQL': '#30638E',
+    'TracedSPARQL S2S': '#2A5B21'
+}
+approaches = ['Baseline', 'Baseline S2S', 'TracedSPARQL', 'TracedSPARQL S2S']
+
+queries_lubm = 10
+queries_watdiv = 18
+queries_dbpedia = 20
 
 
 def stdev(data):
@@ -146,7 +167,73 @@ def summarize():
                         summarize_testbed(benchmark, dataset, network, config)
 
 
+def get_stats(benchmark, kg, network):
+    if benchmark == 'dbpedia':
+        dataset = 'tracedsparql_' + benchmark
+    else:
+        if benchmark == 'lubm':
+            kg = kg.lower()
+        dataset = 'tracedsparql_' + benchmark + '_' + kg
+    stats_net1 = genfromtxt(os.path.join(summarized_path, benchmark, dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8')
+    stats_pd = pd.DataFrame(stats_net1)
+    stats_pd.loc[stats_pd['approach'] == 'baseline', 'approach'] = 'Baseline'
+    stats_pd.loc[stats_pd['approach'] == 's2s_baseline', 'approach'] = 'Baseline S2S'
+    stats_pd.loc[stats_pd['approach'] == 'tracedsparql', 'approach'] = 'TracedSPARQL'
+    stats_pd.loc[stats_pd['approach'] == 's2s_tracedsparql', 'approach'] = 'TracedSPARQL S2S'
+    return stats_pd
+
+
+def violin_plot(benchmark, network, num_queries, filename, title):
+    stats_new = pd.DataFrame(columns=['Engine', 'kg', 'execution_time'])
+    for kg in kgs[benchmark]:
+        stats_pd = get_stats(benchmark, kg, network)
+        for approach in approaches:
+            if benchmark == 'watdiv' or benchmark == 'dbpedia':
+                if 'S2S' in approach:
+                    continue
+            approach_pd = stats_pd[stats_pd['approach'] == approach].reset_index()
+            times = approach_pd['total_execution_time'].to_list()
+            num_results = len(times)
+            while num_results < num_queries:
+                times.append(600.0)
+                num_results += 1
+            stats_new = pd.concat([stats_new, pd.DataFrame({'Engine': approach, 'execution_time': times, 'kg': kg})])
+
+    plt.figure(figsize=(15, 8))
+    ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
+    sns.move_legend(ax, loc='upper center', bbox_to_anchor=(0.5, 1.05), fancybox=True, shadow=True, prop={'size': 10}, ncol=4)
+    plt.title(title, fontsize=12, fontweight='bold', y=1.05)
+    plt.xlabel('KG Size', fontweight='bold', fontsize=10)
+    plt.ylabel('Execution Time', fontweight='bold', fontsize=10)
+    plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
+    plt.savefig(os.path.join(plot_path, filename))
+
+
+def plot_results():
+    plots = [
+        {'benchmark': 'lubm', 'network': 'network1', 'num_queries': queries_lubm,
+         'filename': 'violin_combined_lubm_network1.png',
+         'title': 'Execution Times for LUBM validated with LUBM-network1'},
+        {'benchmark': 'lubm', 'network': 'network2', 'num_queries': queries_lubm,
+         'filename': 'violin_combined_lubm_network2.png',
+         'title': 'Execution Times for LUBM validated with LUBM-network2'},
+        {'benchmark': 'watdiv', 'network': 'network1', 'num_queries': queries_watdiv,
+         'filename': 'violin_combined_watdiv_network1.png',
+         'title': 'Execution Times for WatDiv validated with WatDiv-network1'},
+        {'benchmark': 'watdiv', 'network': 'network2', 'num_queries': queries_watdiv,
+         'filename': 'violin_combined_watdiv_network2.png',
+         'title': 'Execution Times for WatDiv validated with WatDiv-network2'},
+        {'benchmark': 'dbpedia', 'network': 'dbpedia', 'num_queries': queries_dbpedia,
+         'filename': 'violin_combined_dbpedia.png',
+         'title': 'Execution Times for DBpedia validated with the DBpedia shapes'}
+    ]
+    for plot in plots:
+        violin_plot(**plot)
+
+
 if __name__ == '__main__':
     os.makedirs(summarized_path, exist_ok=True)
     summarize()
+    os.makedirs(plot_path, exist_ok=True)
+    plot_results()
 
