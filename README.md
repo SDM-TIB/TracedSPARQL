@@ -14,7 +14,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
     1. [Engines](#engines)
     1. [Setups](#setups)
     1. [How to reproduce?](#how-to-reproduce)
-1. [License](#license)    
+1. [License](#license)
 1. [References](#references)
 
 ## Preparation of the Environment
@@ -76,6 +76,16 @@ You can run the entire pipeline by executing:
 ```bash
 sudo ./00_auto.sh
 ```
+
+In the following, the different scripts are described in short.
+
+- _00_auto.sh_: Executes the entire experiment automatically
+- _01_preparation.sh_: Prepares the experimental environment, i.e., downloads the data and sets up the Docker containers
+- _02_experiments_lubm.sh_: Executes the experiments for LUBM
+- _03_experiments_watdiv.sh_: Executes the experiments for WatDiv
+- _04_experiments_dbpedia.sh_: Executes the experiments for DBpedia
+- _05_ablation_study.sh_: Executes the ablation study
+- _06_cleanup.sh_: Cleans up the experimental environment including changing the ownership of result files to the user executing the script
 
 ## License
 TracedSPARQL is licensed under GPL-3.0, see the [license](https://github.com/SDM-TIB/TracedSPARQL/blob/master/LICENSE).
