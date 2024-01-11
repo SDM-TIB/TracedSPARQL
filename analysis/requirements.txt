@@ -1,4 +1,5 @@
 numpy==1.26.2
 matplotlib==3.8.2
 pandas[performance]==2.1.4
+seaborn==0.13.0
 
