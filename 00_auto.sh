@@ -6,4 +6,5 @@
 ./03_experiments_watdiv.sh
 ./04_experiments_dbpedia.sh
 ./05_ablation_study.sh
-./06_cleanup.sh
+./06_plots.sh
+./07_cleanup.sh
