@@ -25,12 +25,24 @@ palette = {
     'TracedSPARQL': '#30638E',
     'TracedSPARQL S2S': '#2A5B21'
 }
+palette_ablation = {
+    'no heuristics': '#264653',
+    'Heuristic 1': '#2A9D8F',
+    'Heuristic 2': '#8AB17D',
+    'Heuristic 3': '#E9C46A',
+    'Heuristic 4': '#F4A261',
+    'all heuristics combined': '#E76F51'
+}
 approaches = ['Baseline', 'Baseline S2S', 'TracedSPARQL', 'TracedSPARQL S2S']
+approaches_ablation = ['no heuristics', 'Heuristic 1', 'Heuristic 2', 'Heuristic 3', 'Heuristic 4', 'all heuristics combined']
 
 queries_lubm = 10
 queries_watdiv = 18
 queries_dbpedia = 20
 
+queries_ablation_lubm = 5
+queries_ablation_watdiv = 10
+queries_ablation_dbpedia = 10
 
 def stdev(data):
     if len(data) < 2:
@@ -209,6 +221,34 @@ def violin_plot(benchmark, network, num_queries, filename, title):
     plt.savefig(os.path.join(plot_path, filename))
 
 
+def violin_ablation(dataset, network, num_queries, filename, title):
+    stats = pd.DataFrame(genfromtxt(os.path.join(summarized_path, 'ablation', 'tracedsparql_' + dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))
+    stats.loc[stats['approach'] == 'baseline', 'approach'] = 'no heuristics'
+    stats.loc[stats['approach'] == 'tracedsparql', 'approach'] = 'all heuristics combined'
+    stats.loc[stats['approach'] == 'opt1', 'approach'] = 'Heuristic 1'
+    stats.loc[stats['approach'] == 'opt2', 'approach'] = 'Heuristic 2'
+    stats.loc[stats['approach'] == 'opt3', 'approach'] = 'Heuristic 3'
+    stats.loc[stats['approach'] == 'opt4', 'approach'] = 'Heuristic 4'
+
+    stats_new = pd.DataFrame(columns=['Heuristic', 'execution_time'])
+    for approach in approaches_ablation:
+        df_approach = stats[stats['approach'] == approach].reset_index()
+        times = df_approach['total_execution_time'].to_list()
+        num_results = len(times)
+        while num_results < num_queries:
+            times.append(600.0)
+            num_results += 1
+        stats_new = pd.concat([stats_new, pd.DataFrame({'Heuristic': approach, 'execution_time': times})])
+
+    plt.figure(figsize=(15,8))
+    sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9,cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
+    plt.title(title, fontsize=12, fontweight='bold', y=1.05)
+    plt.xlabel('Heuristic', fontweight='bold', fontsize=10)
+    plt.ylabel('Execution Time', fontweight='bold', fontsize=10)
+    plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
+    plt.savefig(os.path.join(plot_path, filename))
+
+
 def plot_results():
     plots = [
         {'benchmark': 'lubm', 'network': 'network1', 'num_queries': queries_lubm,
@@ -229,6 +269,20 @@ def plot_results():
     ]
     for plot in plots:
         violin_plot(**plot)
+
+    ablation_plots = [
+        {'dataset': 'lubm_mkg', 'network': 'network2', 'num_queries': queries_ablation_lubm,
+         'filename': 'violin_ablation_lubm.png',
+         'title': 'Ablation Study for LUBM MKG validated with LUBM-network2'},
+        {'dataset': 'watdiv_10M', 'network': 'network1', 'num_queries': queries_ablation_watdiv,
+         'filename': 'violin_ablation_watdiv.png',
+         'title': 'Ablation Study for WatDiv MKG validated with WatDiv-network1'},
+        {'dataset': 'dbpedia', 'network': 'dbpedia', 'num_queries': queries_ablation_dbpedia,
+         'filename': 'violin_ablation_dbpedia.png',
+         'title': 'Ablation Study for DBpedia validated with the DBpedia shapes'}
+    ]
+    for ablation_plot in ablation_plots:
+        violin_ablation(**ablation_plot)
 
 
 if __name__ == '__main__':
