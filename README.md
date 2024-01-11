@@ -85,7 +85,8 @@ In the following, the different scripts are described in short.
 - _03_experiments_watdiv.sh_: Executes the experiments for WatDiv
 - _04_experiments_dbpedia.sh_: Executes the experiments for DBpedia
 - _05_ablation_study.sh_: Executes the ablation study
-- _06_cleanup.sh_: Cleans up the experimental environment including changing the ownership of result files to the user executing the script
+- _06_plots.sh_: Creates the plots presented in the paper
+- _07_cleanup.sh_: Cleans up the experimental environment including changing the ownership of result files to the user executing the script
 - _run_testbeds.sh: Contains functions for performing the experiments
 - _variables.sh: Contains variables used for performing the experiments
 
