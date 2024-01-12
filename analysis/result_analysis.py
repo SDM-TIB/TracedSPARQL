@@ -205,10 +205,7 @@ def violin_plot(benchmark, network, num_queries, filename, title):
                     continue
             approach_pd = stats_pd[stats_pd['approach'] == approach].reset_index()
             times = approach_pd['total_execution_time'].to_list()
-            num_results = len(times)
-            while num_results < num_queries:
-                times.append(600.0)
-                num_results += 1
+            times.extend([600.0] * (num_queries - len(times)))
             stats_new = pd.concat([stats_new, pd.DataFrame({'Engine': approach, 'execution_time': times, 'kg': kg})])
 
     plt.figure(figsize=(15, 8))
@@ -234,10 +231,7 @@ def violin_ablation(dataset, network, num_queries, filename, title):
     for approach in approaches_ablation:
         df_approach = stats[stats['approach'] == approach].reset_index()
         times = df_approach['total_execution_time'].to_list()
-        num_results = len(times)
-        while num_results < num_queries:
-            times.append(600.0)
-            num_results += 1
+        times.extend([600.0] * (num_queries - len(times)))
         stats_new = pd.concat([stats_new, pd.DataFrame({'Heuristic': approach, 'execution_time': times})])
 
     plt.figure(figsize=(15,8))
@@ -256,19 +250,15 @@ def get_stats_comparison(benchmark, kg, network, num_queries):
         dataset = 'tracedsparql_' + benchmark.lower() + '_' + (kg.lower() if benchmark.lower() == 'lubm' else kg)
     stats = pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))
     stats.loc[stats['approach'] == 'tracedsparql', 'approach'] = 'TracedSPARQL'
-    stats = pd.concat([stats, pd.DataFrame( genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, 'no_shapes', 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))])
+    stats = pd.concat([stats, pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, 'no_shapes', 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))])
     stats.loc[stats['approach'] == 'no_SHACL', 'approach'] = 'no validation'
 
     stats_new = pd.DataFrame(columns=['Validation', 'execution_time', 'dataset'])
     for approach in approaches_comparison:
         df_approach = stats[stats['approach'] == approach].reset_index()
         times = df_approach['total_execution_time'].to_list()
-        num_results = len(times)
-        while num_results < num_queries:
-            times.append(600.0)
-            num_results += 1
-        stats_new = pd.concat(
-            [stats_new, pd.DataFrame({'Validation': approach, 'execution_time': times, 'dataset': (benchmark + ' ' + kg) if benchmark.lower() != 'dbpedia' else benchmark})])
+        times.extend([600.0] * (num_queries - len(times)))
+        stats_new = pd.concat([stats_new, pd.DataFrame({'Validation': approach, 'execution_time': times, 'dataset': (benchmark + ' ' + kg) if benchmark.lower() != 'dbpedia' else benchmark})])
 
     return stats_new
 
