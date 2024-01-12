@@ -249,6 +249,54 @@ def violin_ablation(dataset, network, num_queries, filename, title):
     plt.savefig(os.path.join(plot_path, filename))
 
 
+def get_stats_comparison(benchmark, kg, network, num_queries):
+    if benchmark.lower() == 'dbpedia':
+        dataset = 'tracedsparql_' + benchmark.lower()
+    else:
+        dataset = 'tracedsparql_' + benchmark.lower() + '_' + (kg.lower() if benchmark.lower() == 'lubm' else kg)
+    stats = pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))
+    stats.loc[stats['approach'] == 'tracedsparql', 'approach'] = 'TracedSPARQL'
+    stats = pd.concat([stats, pd.DataFrame( genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, 'no_shapes', 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))])
+    stats.loc[stats['approach'] == 'no_SHACL', 'approach'] = 'no validation'
+
+    stats_new = pd.DataFrame(columns=['Validation', 'execution_time', 'dataset'])
+    for approach in approaches_comparison:
+        df_approach = stats[stats['approach'] == approach].reset_index()
+        times = df_approach['total_execution_time'].to_list()
+        num_results = len(times)
+        while num_results < num_queries:
+            times.append(600.0)
+            num_results += 1
+        stats_new = pd.concat(
+            [stats_new, pd.DataFrame({'Validation': approach, 'execution_time': times, 'dataset': (benchmark + ' ' + kg) if benchmark.lower() != 'dbpedia' else benchmark})])
+
+    return stats_new
+
+
+def violin_comparison():
+    filename = 'violin_comparison.png'
+    title = 'Comparison of execution times with and without validation'
+
+    stats_lubm_skg = get_stats_comparison('LUBM', 'SKG', 'network1', queries_lubm)
+    stats_lubm_mkg = get_stats_comparison('LUBM', 'MKG', 'network1', queries_lubm)
+    stats_lubm_lkg = get_stats_comparison('LUBM', 'LKG', 'network1', queries_lubm)
+    stats_watdiv_500k = get_stats_comparison('WatDiv', '500k', 'network1', queries_watdiv)
+    stats_watdiv_10M = get_stats_comparison('WatDiv', '10M', 'network1', queries_watdiv)
+    stats_watdiv_100M = get_stats_comparison('WatDiv', '100M', 'network1', queries_watdiv)
+    stats_dbpedia = get_stats_comparison('DBpedia', 'dbpedia', 'dbpedia', queries_dbpedia)
+
+    stats_new = pd.concat([stats_lubm_skg, stats_lubm_mkg, stats_lubm_lkg, stats_watdiv_500k, stats_watdiv_10M, stats_watdiv_100M, stats_dbpedia])
+    plt.figure(figsize=(15,8))
+    ax = sns.violinplot(data=stats_new, x='dataset', y='execution_time', hue='Validation', palette=palette_comparison, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, split=True, log_scale=True, gap=0.1)
+    sns.move_legend(ax, loc='upper center', bbox_to_anchor=(0.5, 1.05), fancybox=True, shadow=True, prop={'size': 10}, ncol=2)
+    plt.title(title, fontsize=12, fontweight='bold', y=1.05)
+    plt.xlabel('Knowledge Graph', fontweight='bold', fontsize=10)
+    plt.ylabel('Execution Time [s] (log scale)', fontweight='bold', fontsize=10)
+    ax.set_ylim(bottom=1/30, top=1000, emit=True, auto=False)
+    plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
+    plt.savefig(os.path.join(plot_path, filename))
+
+
 def plot_results():
     plots = [
         {'benchmark': 'lubm', 'network': 'network1', 'num_queries': queries_lubm,
@@ -283,6 +331,8 @@ def plot_results():
     ]
     for ablation_plot in ablation_plots:
         violin_ablation(**ablation_plot)
+
+    violin_comparison()
 
 
 if __name__ == '__main__':
