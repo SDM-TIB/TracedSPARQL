@@ -52,6 +52,8 @@ The following benchmarks are covered:
 
 For LUBM and WatDiv knowledge graphs of three different sizes are used.
 Hence, a total of seven knowledge graphs are evaluated.
+For LUBM and WatDiv two SHACL shape schemas of different complexity are validated.
+In the case of DBpedia, a single SHACL shape schema is used.
 All data used are made public [\[4\]](#4).
 
 ### Engines
