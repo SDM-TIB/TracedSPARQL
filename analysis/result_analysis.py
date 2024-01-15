@@ -209,7 +209,7 @@ def violin_plot(benchmark, network, num_queries, filename, title):
             stats_new = pd.concat([stats_new, pd.DataFrame({'Engine': approach, 'execution_time': times, 'kg': kg})])
 
     plt.figure(figsize=(15, 8))
-    ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
+    ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
     sns.move_legend(ax, loc='upper center', bbox_to_anchor=(0.5, 1.05), fancybox=True, shadow=True, prop={'size': 10}, ncol=4)
     plt.title(title, fontsize=12, fontweight='bold', y=1.05)
     plt.xlabel('KG Size', fontweight='bold', fontsize=10)
@@ -235,7 +235,7 @@ def violin_ablation(dataset, network, num_queries, filename, title):
         stats_new = pd.concat([stats_new, pd.DataFrame({'Heuristic': approach, 'execution_time': times})])
 
     plt.figure(figsize=(15,8))
-    sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9,cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
+    sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9,cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
     plt.title(title, fontsize=12, fontweight='bold', y=1.05)
     plt.xlabel('Heuristic', fontweight='bold', fontsize=10)
     plt.ylabel('Execution Time', fontweight='bold', fontsize=10)
