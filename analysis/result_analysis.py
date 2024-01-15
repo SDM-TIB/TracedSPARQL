@@ -33,8 +33,13 @@ palette_ablation = {
     'Heuristic 4': '#F4A261',
     'all heuristics combined': '#E76F51'
 }
+palette_comparison = {
+    'no validation': '#EDAE49',
+    'TracedSPARQL': '#30638E',
+}
 approaches = ['Baseline', 'Baseline S2S', 'TracedSPARQL', 'TracedSPARQL S2S']
 approaches_ablation = ['no heuristics', 'Heuristic 1', 'Heuristic 2', 'Heuristic 3', 'Heuristic 4', 'all heuristics combined']
+approaches_comparison = ['no validation', 'TracedSPARQL']
 
 queries_lubm = 10
 queries_watdiv = 18
