@@ -54,6 +54,10 @@ For LUBM and WatDiv knowledge graphs of three different sizes are used.
 Hence, a total of seven knowledge graphs are evaluated.
 For LUBM and WatDiv two SHACL shape schemas of different complexity are validated.
 In the case of DBpedia, a single SHACL shape schema is used.
+10 SPARQL queries from the LUBM benchmark are included in the evaluation.
+From WatDiv, 18 SPARQL queries are considered.
+20 SPARQL queries are created for the evaluation of DBpedia.
+The SPARQL queries cover at least one SHACL shape schema of the respective benchmark.
 All data used are made public [\[4\]](#4).
 
 ### Engines
