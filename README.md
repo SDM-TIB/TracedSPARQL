@@ -93,8 +93,8 @@ In the following, the different scripts are described in short.
 - _05_ablation_study.sh_: Executes the ablation study
 - _06_plots.sh_: Creates the plots presented in the paper
 - _07_cleanup.sh_: Cleans up the experimental environment including changing the ownership of result files to the user executing the script
-- _run_testbeds.sh: Contains functions for performing the experiments
-- _variables.sh: Contains variables used for performing the experiments
+- _run_testbeds.sh_: Contains functions for performing the experiments
+- _variables.sh_: Contains variables used for performing the experiments
 
 ## License
 TracedSPARQL is licensed under GPL-3.0, see the [license](https://github.com/SDM-TIB/TracedSPARQL/blob/master/LICENSE).
