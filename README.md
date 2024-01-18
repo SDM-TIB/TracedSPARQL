@@ -21,6 +21,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
 ### Machine Requirements
 - OS: Ubuntu 16.04.6 LTS or newer
 - Memory: 128 GiB
+- HDD: approx. 50 GiB free disk space
 
 ### Software
 - Docker - v19.03.6 or newer
