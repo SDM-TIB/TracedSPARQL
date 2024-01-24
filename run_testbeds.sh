@@ -50,7 +50,7 @@ iterations() {
         else
           echo $(timestamp) $endpoint $shape_dir $query_id $api_config $i;
           error_hint=$(echo $(timestamp) $endpoint $shape_dir $query_id $api_config $i);
-          output_dir=/results/raw/$out_dir/$endpoint/$shape_dir/$api_config/run_$i;
+          output_dir=/results/raw/$out_dir/$endpoint/$(basename -- $shape_dir)/$api_config/run_$i;
           mkdir -p "./"$output_dir
           docker exec -it $DOCKER_ENGINE bash -c "cd /TracedSPARQL; (timeout -s 15 602 python3 TracedSPARQL.py -q $query_file -c /TracedSPARQL/Config/${RDFMTS[$endpoint]} -i $query_id -a /inputs/api_configs/$api_config.json -s /inputs/$shape_dir -p $output_dir);" > >(error $error_hint);
       fi
