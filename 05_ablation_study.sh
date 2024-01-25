@@ -7,6 +7,7 @@ declare -a configs_ablation=("ablation/baseline"
                              "ablation/opt-1"
                              "ablation/opt-2"
                              "ablation/opt-3"
+                             "ablation/opt-4"
                              "ablation/tracedsparql")
 
 declare -a datasets=($DOCKER_BENCHMARK_LUBM_MKG)
