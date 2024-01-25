@@ -264,7 +264,7 @@ def get_stats_comparison(benchmark, kg, network, num_queries):
     stats = pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))
     stats.loc[stats['approach'] == 'tracedsparql', 'approach'] = 'TracedSPARQL'
     stats = pd.concat([stats, pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, 'no_shapes', 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))])
-    stats.loc[stats['approach'] == 'no_SHACL', 'approach'] = 'no validation'
+    stats.loc[stats['approach'] == 'no_shacl', 'approach'] = 'no validation'
 
     stats_new = None
     for approach in approaches_comparison:
