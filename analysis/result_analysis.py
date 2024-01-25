@@ -201,7 +201,7 @@ def get_stats(benchmark, kg, network):
 
 
 def violin_plot(benchmark, network, num_queries, filename, title):
-    stats_new = pd.DataFrame(columns=['Engine', 'kg', 'execution_time'])
+    stats_new = None
     for kg in kgs[benchmark]:
         stats_pd = get_stats(benchmark, kg, network)
         for approach in approaches:
@@ -211,7 +211,11 @@ def violin_plot(benchmark, network, num_queries, filename, title):
             approach_pd = stats_pd[stats_pd['approach'] == approach].reset_index()
             times = approach_pd['total_execution_time'].to_list()
             times.extend([600.0] * (num_queries - len(times)))
-            stats_new = pd.concat([stats_new, pd.DataFrame({'Engine': approach, 'execution_time': times, 'kg': kg})])
+            current_stats = pd.DataFrame({'Engine': approach, 'execution_time': times, 'kg': kg})
+            if stats_new is None:
+                stats_new = current_stats
+            else:
+                stats_new = pd.concat([stats_new, current_stats])
 
     plt.figure(figsize=(15, 8))
     ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
@@ -232,12 +236,16 @@ def violin_ablation(dataset, network, num_queries, filename, title):
     stats.loc[stats['approach'] == 'opt3', 'approach'] = 'Heuristic 3'
     stats.loc[stats['approach'] == 'opt4', 'approach'] = 'Heuristic 4'
 
-    stats_new = pd.DataFrame(columns=['Heuristic', 'execution_time'])
+    stats_new = None
     for approach in approaches_ablation:
         df_approach = stats[stats['approach'] == approach].reset_index()
         times = df_approach['total_execution_time'].to_list()
         times.extend([600.0] * (num_queries - len(times)))
-        stats_new = pd.concat([stats_new, pd.DataFrame({'Heuristic': approach, 'execution_time': times})])
+        current_stats = pd.DataFrame({'Heuristic': approach, 'execution_time': times})
+        if stats_new is None:
+            stats_new = current_stats
+        else:
+            stats_new = pd.concat([stats_new, current_stats])
 
     plt.figure(figsize=(15,8))
     sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9,cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
@@ -258,12 +266,20 @@ def get_stats_comparison(benchmark, kg, network, num_queries):
     stats = pd.concat([stats, pd.DataFrame(genfromtxt(os.path.join(summarized_path, benchmark.lower(), dataset, 'no_shapes', 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))])
     stats.loc[stats['approach'] == 'no_SHACL', 'approach'] = 'no validation'
 
-    stats_new = pd.DataFrame(columns=['Validation', 'execution_time', 'dataset'])
+    stats_new = None
     for approach in approaches_comparison:
         df_approach = stats[stats['approach'] == approach].reset_index()
         times = df_approach['total_execution_time'].to_list()
         times.extend([600.0] * (num_queries - len(times)))
-        stats_new = pd.concat([stats_new, pd.DataFrame({'Validation': approach, 'execution_time': times, 'dataset': (benchmark + ' ' + kg) if benchmark.lower() != 'dbpedia' else benchmark})])
+        current_stats = pd.DataFrame({
+            'Validation': approach,
+            'execution_time': times,
+            'dataset': (benchmark + ' ' + kg) if benchmark.lower() != 'dbpedia' else benchmark
+        })
+        if stats_new is None:
+            stats_new = current_stats
+        else:
+            stats_new = pd.concat([stats_new, current_stats])
 
     return stats_new
 
