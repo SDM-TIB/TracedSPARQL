@@ -218,11 +218,14 @@ def violin_plot(benchmark, network, num_queries, filename, title):
                 stats_new = pd.concat([stats_new, current_stats])
 
     plt.figure(figsize=(15, 8))
-    ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
+    ax = sns.violinplot(data=stats_new, x='kg', y='execution_time', hue='Engine', palette=palette, saturation=.75, cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
     sns.move_legend(ax, loc='upper center', bbox_to_anchor=(0.5, 1.05), fancybox=True, shadow=True, prop={'size': 10}, ncol=4)
     plt.title(title, fontsize=12, fontweight='bold', y=1.05)
-    plt.xlabel('KG Size', fontweight='bold', fontsize=10)
-    plt.ylabel('Execution Time', fontweight='bold', fontsize=10)
+    plt.xlabel('Knowledge Graph Size', fontweight='bold', fontsize=10)
+    plt.ylabel('Execution Time [s]', fontweight='bold', fontsize=10)
+    ax.set_ylim(bottom=0, top=630, emit=True, auto=False)
+    ax.axhline(y=600, color='r', linestyle=(0, (5, 10)), linewidth=1)
+    plt.text(x=-0.475, y=605, s='Timeout', color='r')
     plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
     plt.savefig(os.path.join(plot_path, filename))
 
