@@ -306,7 +306,9 @@ def violin_comparison():
     plt.title(title, fontsize=12, fontweight='bold', y=1.05)
     plt.xlabel('Knowledge Graph', fontweight='bold', fontsize=10)
     plt.ylabel('Execution Time [s] (log scale)', fontweight='bold', fontsize=10)
-    ax.set_ylim(bottom=1/30, top=1000, emit=True, auto=False)
+    ax.set_ylim(bottom=0.3, top=900, emit=True, auto=False)
+    ax.axhline(y=600, color='r', linestyle=(0, (5, 10)), linewidth=1)
+    plt.text(x=-0.45, y=650, s='Timeout', color='r')
     plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
     plt.savefig(os.path.join(plot_path, filename))
 
