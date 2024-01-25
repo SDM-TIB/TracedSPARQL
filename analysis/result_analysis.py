@@ -250,11 +250,14 @@ def violin_ablation(dataset, network, num_queries, filename, title):
         else:
             stats_new = pd.concat([stats_new, current_stats])
 
-    plt.figure(figsize=(15,8))
-    sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9,cut=0, inner='point', inner_kws={'color': 'r', 's': 32}, log_scale=True)
+    plt.figure(figsize=(15, 8))
+    ax = sns.violinplot(data=stats_new, x='Heuristic', y='execution_time', hue='Heuristic', palette=palette_ablation, saturation=.9, cut=0, inner='point', inner_kws={'color': 'r', 's': 32})
     plt.title(title, fontsize=12, fontweight='bold', y=1.05)
     plt.xlabel('Heuristic', fontweight='bold', fontsize=10)
-    plt.ylabel('Execution Time', fontweight='bold', fontsize=10)
+    plt.ylabel('Execution Time [s]', fontweight='bold', fontsize=10)
+    ax.set_ylim(bottom=0, top=630, emit=True, auto=False)
+    ax.axhline(y=600, color='r', linestyle=(0, (5, 10)), linewidth=1)
+    plt.text(x=-0.475, y=605, s='Timeout', color='r')
     plt.subplots_adjust(left=0.05, right=0.99, bottom=0.07, top=0.92)
     plt.savefig(os.path.join(plot_path, filename))
 
