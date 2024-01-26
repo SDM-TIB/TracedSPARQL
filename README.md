@@ -1,5 +1,6 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-![Python version](https://img.shields.io/badge/python-3-blue)
+![Python version](https://img.shields.io/badge/python-3-blue.svg)
+[![Data](https://img.shields.io/badge/Data-10.57702/wfl730bc-green.svg)](https://doi.org/10.57702/wfl730bc)
 
 # TracedSPARQL
 
