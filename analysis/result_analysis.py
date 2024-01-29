@@ -234,10 +234,10 @@ def violin_ablation(dataset, network, num_queries, filename, title):
     stats = pd.DataFrame(genfromtxt(os.path.join(summarized_path, 'ablation', 'tracedsparql_' + dataset, network, 'stats.csv'), delimiter=',', names=True, dtype=None, encoding='utf8'))
     stats.loc[stats['approach'] == 'baseline', 'approach'] = 'no heuristics'
     stats.loc[stats['approach'] == 'tracedsparql', 'approach'] = 'all heuristics combined'
-    stats.loc[stats['approach'] == 'opt1', 'approach'] = 'Heuristic 1'
-    stats.loc[stats['approach'] == 'opt2', 'approach'] = 'Heuristic 2'
-    stats.loc[stats['approach'] == 'opt3', 'approach'] = 'Heuristic 3'
-    stats.loc[stats['approach'] == 'opt4', 'approach'] = 'Heuristic 4'
+    stats.loc[stats['approach'] == 'opt-1', 'approach'] = 'Heuristic 1'
+    stats.loc[stats['approach'] == 'opt-2', 'approach'] = 'Heuristic 2'
+    stats.loc[stats['approach'] == 'opt-3', 'approach'] = 'Heuristic 3'
+    stats.loc[stats['approach'] == 'opt-4', 'approach'] = 'Heuristic 4'
 
     stats_new = None
     for approach in approaches_ablation:
