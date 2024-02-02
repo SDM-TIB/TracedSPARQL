@@ -69,10 +69,12 @@ The federated SPARQL query engine used is DeTrusty [\[5\]](#5).
 The SHACL validation is performed by Trav-SHACL [\[6\]](#6) and SHACL2SPARQLpy [\[7\]](#7), a Python implementation of SHACL2SPARQL [\[8\]](#8).
 This leads to the following engines included in the evaluation:
 
-- _Baseline_: The baseline approach using Trav-SHACL
-- _Baseline S2S_: The baseline approach using SHACL2SPARQLpy
-- _TracedSPARQL_: The TracedSPARQL approach using Trav-SHACL
-- _TracedSPARQL S2S_: The TracedSPARQL approach using SHACL2SPARQLpy
+| Name             | SHACL Validator | Heuristics |
+|------------------|-----------------|------------|
+| Baseline         | Trav-SHACL      | none       |
+| Baseline S2S     | SHACL2SPARQLpy  | none       |
+| TracedSPARQL     | Trav-SHACL      | all        |
+| TracedSPARQL S2S | SHACL2SPARQLpy  | all        |
 
 ### Setups
 The combination of a knowledge graph, engine, SHACL shape schema, and SPARQL query is referred to as a testbed; this leads to a total of 1,065 testbeds.
