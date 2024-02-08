@@ -12,6 +12,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
     1. [Software](#software)
     1. [Bash Commands](#bash-commands)
 1. [Experiments](#experiments)
+    1. [Research Questions](#research-questions)
     1. [Data](#data)
     1. [Engines](#engines)
     1. [Setups](#setups)
@@ -45,6 +46,11 @@ The experiment scripts use the following bash commands:
 - wget
 
 ## Experiments
+### Research Questions
+1. What is the overhead of adding online SHACL validation to the SPARQL query processing?
+1. Do the proposed optimizations increase the performance?
+1. Which heuristic has the highest single effect?
+
 ### Data
 Data from three benchmarks are used in the evaluation of TracedSPARQL.
 The following benchmarks are covered:
