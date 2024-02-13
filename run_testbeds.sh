@@ -32,7 +32,7 @@ iterations() {
       query_id=${query_file_name%.*}
       query_id=${query_id/-/.}
 
-      docker exec -it $endpoint bash -c "isql-v 1111 dba dba 'EXEC=shutdown'" > /dev/null 2> /dev/null
+      docker exec -it $endpoint bash -c "isql 1111 dba dba 'EXEC=shutdown'" > /dev/null 2> /dev/null
       sleep 2s
       docker restart $endpoint $DOCKER_ENGINE > /dev/null
       until $(curl --output /dev/null --silent --head --fail http://localhost:${PORTS[$endpoint]}/sparql); do
