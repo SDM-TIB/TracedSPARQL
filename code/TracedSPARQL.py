@@ -1079,7 +1079,7 @@ def main(query_file, config_file, print_result, val_config, query_id, output_dir
             'approach': approach_name,
             'total_execution_time': end_time - start_time,
             'query_time': query_time if val_config else 'NaN',
-            'network_validation_time': val_time if val_config else 'NaN',
+            'validation_time': val_time if val_config else 'NaN',
             'query_val_join_time': join_time if val_config else 'NaN'
         }
         with open(stats_file, mode, encoding='utf-8') as f:
@@ -1120,4 +1120,3 @@ if __name__ == '__main__':
         query_id=query_id,
         output_dir=output_dir
     )
-

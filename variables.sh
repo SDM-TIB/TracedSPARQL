@@ -37,11 +37,11 @@ declare -a CONFIGS=($CONFIG_BASELINE
                     $CONFIG_TRACEDSPARQL
                     $CONFIG_TRACEDSPARQL_S2S)
 
-# SHACL networks
-declare -a SHAPES_LUBM=("/shapes/lubm/network1"
-                        "/shapes/lubm/network2")
-declare -a SHAPES_WATDIV=("/shapes/watdiv/network1"
-                          "/shapes/watdiv/network2")
+# SHACL Shape Schemas
+declare -a SHAPES_LUBM=("/shapes/lubm/schema1"
+                        "/shapes/lubm/schema2")
+declare -a SHAPES_WATDIV=("/shapes/watdiv/schema1"
+                          "/shapes/watdiv/schema2")
 declare -a SHAPES_DBPEDIA=("/shapes/dbpedia")
 
 # mapping from data sets to source description

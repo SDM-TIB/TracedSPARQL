@@ -51,7 +51,7 @@ The experiment scripts use the following bash commands:
 1. Do the proposed optimizations increase the performance?
 1. Which heuristic has the highest single effect?
 
-### Data
+### Data & SHACL Shape Schemas
 Data from three benchmarks are used in the evaluation of TracedSPARQL.
 The following benchmarks are covered:
 
