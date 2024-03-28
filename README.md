@@ -107,6 +107,10 @@ In the following, the different scripts are described in short.
 - _run_testbeds.sh_: Contains functions for performing the experiments
 - _variables.sh_: Contains variables used for performing the experiments
 
+### Results
+
+The result plots included in the paper and a brief summary is available in the [results directory](results/README.md).
+
 ## License
 TracedSPARQL is licensed under GPL-3.0, see the [license](https://github.com/SDM-TIB/TracedSPARQL/blob/master/LICENSE).
 
