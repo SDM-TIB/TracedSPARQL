@@ -2,7 +2,7 @@
 
 ## Motivation
 
-![Motivation](motivating-example.png "Motivation")
+![Motivation](motivating_example.png "Motivation")
 Figure 1: Motivating Example over DBpedia.
 
 Figure 1 present the motivating example of TracedSPARQL.
