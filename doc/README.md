@@ -17,22 +17,26 @@ Figure 1e represents a dependent execution, i.e., the SHACL validation is invoke
 In the following, the proposed heuristics are briefly mentioned and illustrated with an example.
 
 ![Target Query Reformulation](Heuristic1.png "Target Query Reformulation")
+
 Figure 2: Heurisitc 1 - Target Query Reformulation.
 
 The triple pattern(s) from the query Q are added to the target definition of the shape s in order to increase the selectivity of the target definition.
 Hence, less instances need to be validated.
 
 ![Shape Schema Reduction](Heuristic2.png "Shape Schema Reduction")
+
 Figure 3: Heurisitc 2 - Shape Schema Reduction.
 
 The shape schema is reduced to a sub-schema that only includes the shapes that are reachable from the shape s that is associated to the query Q.
 
 ![Start Shape Selection](Heuristic3.png "Start Shape Selection")
+
 Figure 4: Heurisitc 3 - Start Shape Selection.
 
 As start shape for the SHACL validation, the shape s associated with the query Q is chosen.
 
 ![Merging Sub-queries](Heuristic4.png "Merging Sub-queries")
+
 Figure 5: Heurisitc 4 - Merging Sub-queries.
 
 If two sub-queries that can be joined have an overlap in the SHACL shape schema that needs to be validated for each respective sub-query, the two sub-queries are merged into one sub-query in order to avoid the re-validation of shared shapes.
