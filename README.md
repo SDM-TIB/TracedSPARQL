@@ -17,6 +17,7 @@ TracedSPARQL is tracing SHACL validations during SPARQL query processing towards
     1. [Engines](#engines)
     1. [Setups](#setups)
     1. [How to reproduce?](#how-to-reproduce)
+    1. [Results](#results)
 1. [License](#license)
 1. [References](#references)
 
