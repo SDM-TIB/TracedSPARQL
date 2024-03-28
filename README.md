@@ -5,6 +5,7 @@
 # TracedSPARQL
 
 TracedSPARQL is tracing SHACL validations during SPARQL query processing towards a better understanding of SPARQL query results.
+A brief explanation of TracedSPARQL is available in the directory [doc](doc/README.md).
 
 ## Table of Contents
 1. [Preparation of the Environment](#preparation-of-the-environment)
